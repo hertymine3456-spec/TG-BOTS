@@ -15,7 +15,7 @@ COOLDOWN_SECONDS = 60
 USER_COOLDOWN = {}
 MAX_WARNS = 3
 
-app = Client("bot", bot_token=TOKEN, api_id=6, api_hash="eb06d4abfb49dc3eeb1aeb98ae0f581e")
+app = Client("bot", bot_token=TOKEN, api_id=6, api_hash="eb06d4abfb49dc3eeb1aeb98ae0f581e", in_memory=True)
 
 async def init_db():
     async with aiosqlite.connect(DB_PATH) as db:
