@@ -1,3 +1,2 @@
-aiogram==2.25.1
+aiogram==3.17.0
 aiosqlite
-aiohttp==3.8.6
