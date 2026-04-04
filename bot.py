@@ -5,6 +5,7 @@ import aiosqlite
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
+PYTHON_VERSION = 3.10.12
 TOKEN = os.environ.get("TOKEN")
 ADMIN_CHAT_ID = int(os.environ.get("ADMIN_CHAT_ID", 0))
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", 0))
