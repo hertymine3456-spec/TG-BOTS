@@ -3,13 +3,15 @@ import asyncio
 import time
 import aiosqlite
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-PYTHON_VERSION = 3.10.12
-TOKEN = os.environ.get("TOKEN")
-ADMIN_CHAT_ID = int(os.environ.get("ADMIN_CHAT_ID", 0))
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", 0))
-OWNER_ID = int(os.environ.get("OWNER_ID", 0))
+# ========== ТВОИ ДАННЫЕ ==========
+TOKEN = "8767025443:AAEJ7q6kyqgRd3RsSW9-45t_2cJvp9bKPGw"
+ADMIN_CHAT_ID = -1002489835677
+CHANNEL_ID = -1002948114104
+OWNER_ID = 6783350851
+# =================================
+
 DB_PATH = "bot.db"
 
 COOLDOWN_SECONDS = 60
@@ -164,7 +166,7 @@ async def user_message(client, message):
     await message.reply("✅ Отправлено")
 
 @app.on_callback_query()
-async def handle_callback(client, call: CallbackQuery):
+async def handle_callback(client, call):
     if call.data.startswith("ban:"):
         user_id = int(call.data.split(":")[1])
         await ban_user_db(user_id)
@@ -205,10 +207,12 @@ async def handle_warn(client, message):
         count = await remove_warn(user_id)
         await message.reply(f"✅ У {username} осталось варнов: {count}")
 
-async def main():
-    await init_db()
+def main():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(init_db())
     print("Бот запущен!")
-    await app.run()
+    loop.run_until_complete(app.run())
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
