@@ -1,0 +1,17 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "tg-bots"
+version = "1.0.0"
+description = "Telegram bot"
+
+[tool.poetry.dependencies]
+python = "3.10.12"
+pyrogram = "2.0.106"
+aiosqlite = "*"
+pysocks = "*"
+
+[tool.poetry.scripts]
+start = "bot:main"
